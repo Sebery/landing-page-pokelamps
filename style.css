@@ -10,12 +10,13 @@
 
 body {
 	font-family: "Acme", sans-serif;
-	background: #ed4c67;
+	background: white;
+	overflow-x: hidden;
 }
 
 img {
-    max-width: 100%;
-    max-height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 }
 
 h1 {
@@ -47,60 +48,295 @@ a {
 	color: black;
 }
 
+ul {
+	list-style: none;
+}
+
 /*******************************************************************/
 /************************HEADER STYLES******************************/
 /*******************************************************************/
 
 #header {
-    display: flex;
-    height: 70px;
-    background: white;
-    align-items: center;
-    justify-content: space-between;
-    padding: 5px 10px;
+	background: white;
+	height: 90px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	padding: 5px 10px;
 }
 
-#header-logo  {
-    flex-basis: 70px;
-    align-self: stretch;
+#header-logo {
+	display: flex;
+	align-items: center;
 }
 
-#header-title {
-    margin-right: auto;
+#header-img {
+	min-height: 70px;
+	min-width: 70px;
+	max-height: 70px;
+	max-width: 70px;
+	margin-top: 5px;
+}
+
+#header-logo h1 {
+	text-align: end;
+	align-self: flex-end;
+	padding: 8px;
 }
 
 #nav-bar {
-    display: flex;
-    flex-basis: 30%;
-    justify-content: space-between;
-    flex-wrap: nowrap;
-    margin-right: 50px;
+	text-align: end;
+	align-self: flex-end;
+	padding: 8px;
+	font-size: 1.1em;
 }
 
-#nav-bar div {
-    padding: 5px 10px;
-    font-size: 1.4em;
-    margin-top: 10px;
-}
-
-/*
-#header {
+#nav-bar ul {
 	display: flex;
+	justify-content: space-around;
+}
+
+#nav-bar li:hover {
+	transform: scale(1.1);
+}
+
+/*******************************************************************/
+/************************MOBILE MENU STYLES*************************/
+/*******************************************************************/
+
+#mobile-menu {
 	width: 100%;
-	background: #c43f55;
-	justify-content: space-between;
-	padding: 5px 10px;
-	height: 80px;
+	background: white;
+	text-align: center;
+	display: none;
+}
+
+#mobile-menu li {
+	padding: 10px;
+	border-top: 2px solid rgb(168, 168, 168);
+}
+
+#mobile-menu li:hover {
+	background: rgb(168, 168, 168);
+}
+
+/*******************************************************************/
+/************************DISCOUNT STYLES****************************/
+/*******************************************************************/
+
+#discount-container {
+	width: 100%;
+	display: grid;
+	background: #1289a7;
+	grid-template-rows: 1fr 1fr;
+	justify-content: center;
+	padding: 100px;
+}
+
+#form {
+	display: flex;
+}
+
+#form label {
+	align-self: center;
+	margin-right: 10px;
+	font-weight: bold;
+	font-size: 1.2em;
+}
+
+#discount-container button {
+	background: #ed4c67;
+	padding: 0px 20px;
+	border-radius: 10px;
+	font-weight: bold;
+	color: white;
+	border: none;
+	font-size: 1.2em;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+#discount-container input {
+	border: none;
+	padding: 0px 20px;
+	border-radius: 10px;
+}
+
+#discount-container h3 {
+	margin-top: 10px;
+	justify-self: right;
+}
+
+/*******************************************************************/
+/************************PRODUCTS STYLES****************************/
+/*******************************************************************/
+
+#products-container {
+	background: white;
+	width: 90%;
+	display: grid;
+	grid-template-rows: 1fr 3fr;
+	grid-template-columns: 1fr 1fr 1fr;
+	margin: 0px auto;
+	grid-template-areas:
+		"title title title"
+		"product-1 product-2 product-3";
+}
+
+#products-container h2 {
+	grid-area: title;
+	align-self: center;
+	justify-self: center;
+	font-size: 1.8em;
+}
+
+.product {
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	background: #1289a7;
+	padding: 40px;
+	border-radius: 10px;
 	color: white;
 }
 
-#header nav {
-	display: flex;
-	align-items: center;
-	flex-basis: 40%;
+.product:hover {
+	transform: scale(1.03);
 }
 
-.nav-link {
-	flex-grow: 1;
-	text-align: center;
-} *7
+.product img {
+	width: 100%;
+	height: 200px;
+	border-radius: 4px;
+}
+
+.product button {
+	background: #ed4c67;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	font-weight: bold;
+	border-radius: 8px;
+	font-size: 1.2em;
+	cursor: pointer;
+	margin-top: 10px;
+}
+
+.product button:hover {
+	background: #ff5370;
+}
+
+#product-1 {
+	grid-area: product-1;
+}
+
+#product-2 {
+	grid-area: product-2;
+}
+
+#product-3 {
+	grid-area: product-3;
+}
+
+/*******************************************************************/
+/************************PRODUCTS STYLES****************************/
+/*******************************************************************/
+
+@media screen and (max-width: 1000px) {
+	#products-container {
+		grid-template-rows: 0.5fr 2fr 2fr;
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			"title title"
+			"product-1 product-2"
+			"product-3 product-3";
+
+		gap: 40px 0px;
+	}
+
+	#products-container h2 {
+		align-self: flex-end;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	#products-container {
+		grid-template-rows: 0.5fr 2fr 2fr 2fr;
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"title"
+			"product-1"
+			"product-2"
+			"product-3";
+
+		gap: 40px 0px;
+	}
+
+	#products-container h2 {
+		align-self: flex-end;
+	}
+}
+
+/*******************************************************************/
+/************************RESPONSIVE DISCOUNT STYLES*****************/
+/*******************************************************************/
+
+@media screen and (min-width: 800px) {
+	#discount-container {
+		padding: 120px;
+	}
+
+	#discount-container h3 {
+		font-size: 1.7em;
+	}
+
+	#form label {
+		font-size: 1.5em;
+	}
+
+	#discount-container input {
+		width: 400px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	#discount-container {
+		padding-bottom: 50px;
+	}
+
+	#form {
+		flex-direction: column;
+	}
+
+	#discount-container button {
+		margin-left: 0px;
+		margin-top: 10px;
+		padding: 6px 20px;
+	}
+
+	#discount-container input {
+		padding: 10px 20px;
+	}
+
+	#discount-container h3 {
+		font-size: 0.8em;
+		justify-self: center;
+	}
+}
+
+/*******************************************************************/
+/************************RESPONSIVE HEADER STYLES*******************/
+/*******************************************************************/
+
+@media screen and (max-width: 600px) {
+	#nav-bar {
+		opacity: 1;
+		visibility: visible;
+		display: none;
+	}
+
+	#mobile-menu {
+		display: block;
+	}
+}
